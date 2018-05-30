@@ -19,6 +19,10 @@ public class HelloSampleActivity extends AppCompatActivity {
         HelloListener listener = new HelloListener();
 
         btClick.setOnClickListener(listener);
+
+        Button btClear = findViewById(R.id.btClear);
+
+        btClear.setOnClickListener(listener);
     }
 
     private class HelloListener implements View.OnClickListener {
@@ -30,11 +34,25 @@ public class HelloSampleActivity extends AppCompatActivity {
 
             TextView output = findViewById(R.id.tvOutput);
 
-            String inputStr = input.getText().toString();
+            int id = view.getId();
 
-            output.setText(inputStr + "さん、こんにちは！");
+            switch (id) {
 
+                case R.id.btClick:
 
+                    String inputStr = input.getText().toString();
+
+                    output.setText(inputStr + "さん、こんにちは！");
+                    break;
+
+                case R.id.btClear:
+
+                    input.setText("");
+
+                    output.setText("");
+                    break;
+                    
+            }
         }
     }
 }
